@@ -15,8 +15,8 @@ const App = ()=>{
         <Navbar/>
     <Routes>
       <Route path ="/" element= {<Home/>}/>
-        <Route path ="/bill" element= {<InvoiceForm/>}/>
-        <Route path ="/invoiceanddownload" element= {<InvoiceScript/>}/>
+        <Route path ="/Bill" element= {<InvoiceForm/>}/>
+        <Route path ="/InvoiceandDownload" element= {<InvoiceScript/>}/>
     </Routes>
       </InvoiceProvider>
     
