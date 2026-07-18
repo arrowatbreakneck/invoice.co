@@ -1,5 +1,5 @@
 import {BrowserRouter,Route,Routes} from "react-router-dom";
-import InvoiceForm from "./components/bill";
+import InvoiceForm from "./components/Bill";
 import Navbar from "./components/Navbar";
 import Home from "./components/home";
 import Bill from "./components/Invoice&Download";
