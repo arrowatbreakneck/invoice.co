@@ -1,7 +1,7 @@
 import React, { useState,useContext } from "react";
 import { useFormik } from "formik";
-import Bill from "./invoice&Download";
-import { InvoiceContext } from "./invoiceContext";
+import Bill from "./Invoice&Download";
+import { InvoiceContext } from "./InvoiceContext";
 
 
 const InvoiceForm = () => {

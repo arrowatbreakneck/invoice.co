@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { InvoiceContext } from "./invoiceContext";
+import { InvoiceContext } from "./InvoiceContext";
 import jsPDF from "jspdf";
-import autoTable from "jspdf-autotable"; // import the function
+import autoTable from "jspdf-autotable"; 
 
 const Bill = () => {
   const { submittedInvoice } = useContext(InvoiceContext);
