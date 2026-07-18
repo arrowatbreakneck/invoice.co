@@ -11,12 +11,15 @@ const App = ()=>{
     <>
    
      <BrowserRouter>
-    <Navbar/>
+      <InvoiceProvider>
+        <Navbar/>
     <Routes>
       <Route path ="/" element= {<Home/>}/>
         <Route path ="/bill" element= {<InvoiceForm/>}/>
-        <Route path ="/invoice&download" element= {<Bill />}/>
+        <Route path ="/invoiceanddownload" element= {<InvoiceScript/>}/>
     </Routes>
+      </InvoiceProvider>
+    
     </BrowserRouter>
    
     </>
