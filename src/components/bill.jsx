@@ -1,6 +1,6 @@
 import React, { useState,useContext } from "react";
 import { useFormik } from "formik";
-import Bill from "./Invoice&Download";
+import InvoiceScript from "./Invoice&Download";
 import { InvoiceContext } from "./InvoiceContext";
 
 

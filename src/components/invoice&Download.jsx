@@ -3,7 +3,7 @@ import { InvoiceContext } from "./InvoiceContext";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable"; 
 
-const Bill = () => {
+const InvoiceScript = () => {
   const { submittedInvoice } = useContext(InvoiceContext);
 
   const handleDownloadPDF = () => {
@@ -96,4 +96,4 @@ const Bill = () => {
   );
 };
 
-export default Bill;
+export default InvoiceScript;
