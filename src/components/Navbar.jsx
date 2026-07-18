@@ -16,7 +16,7 @@ const Navbar = () => {
         
           <div className="flex space-x-6">
            <Link to="/bill" className="text-black hover:text-white-200 font-medium transition duration-200">Generate invoice</Link>
-            <Link to="/invoice&download" className="text-black hover:text-white-200 font-medium transition duration-200">Invoice&download</Link>
+            <Link to="/InvoiceandDownload" className="text-black hover:text-white-200 font-medium transition duration-200">Invoice&download</Link>
           </div>
         </div>
       </div>
