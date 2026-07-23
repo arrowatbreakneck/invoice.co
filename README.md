@@ -1,16 +1,27 @@
-# React + Vite
+# 📄 React Invoice Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A responsive React application that allows users to **enter invoice details through a form built with Formik** and **download the generated invoice in PDF format easily** using **jsPDF** and **jspdf-autotable**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+- 📝 **Formik-powered form** for handling client and invoice details.
+- ➕ Add multiple items with description, quantity, and rate.
+- 💰 Automatic **subtotal, tax, and total calculation**.
+- 🎨 **Responsive UI** styled with Tailwind CSS for small, medium, and large screens.
+- 📥 **Download invoice as PDF** with professional formatting.
+- 🔔 **Notification system** to guide users after invoice generation.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- **React** – Frontend framework
+- **Formik** – Form handling and validation
+- **Tailwind CSS** – Styling and responsive design
+- **jsPDF** – PDF generation
+- **jspdf-autotable** – Table rendering inside PDF
+- **React Router** – Navigation between pages
+- **Context API** – State management for invoice data
+
