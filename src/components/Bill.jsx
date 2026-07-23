@@ -5,7 +5,7 @@ import { InvoiceContext } from "./InvoiceContext";
 const InvoiceForm = () => {
   const { setSubmittedInvoice } = useContext(InvoiceContext);
   const[notification,setnotification] = useState(false);
-  const taxRate = 0.18; // 18%
+  const taxRate = 0.18; 
 
   const formik = useFormik({
     initialValues: {

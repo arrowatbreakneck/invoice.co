@@ -13,7 +13,7 @@ const InvoiceScript = () => {
 
     
     doc.setFontSize(24);
-    doc.setTextColor(76, 81, 191); // Indigo shade
+    doc.setTextColor(76, 81, 191); 
     doc.text(`Company: ${submittedInvoice.company}`, 14, 20);
 
     doc.setFontSize(18);
@@ -21,7 +21,7 @@ const InvoiceScript = () => {
 
     
     doc.setFontSize(12);
-    doc.setTextColor(0, 0, 0); // reset to black
+    doc.setTextColor(0, 0, 0); 
     doc.text(`Client: ${submittedInvoice.name}`, 14, 40);
     doc.text(`Address: ${submittedInvoice.address}`, 14, 46);
     doc.text(`Invoice #: ${submittedInvoice.invoiceNumber}`, 14, 52);
