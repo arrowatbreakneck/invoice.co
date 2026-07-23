@@ -11,18 +11,23 @@ const InvoiceScript = () => {
 
     const doc = new jsPDF();
 
-    // Title
+    
+    doc.setFontSize(24);
+    doc.setTextColor(76, 81, 191); // Indigo shade
+    doc.text(`Company: ${submittedInvoice.company}`, 14, 20);
+
     doc.setFontSize(18);
-    doc.text("Invoice", 14, 20);
+    doc.text("Invoice", 14, 30);
 
-    // Client Info
+    
     doc.setFontSize(12);
-    doc.text(`Client: ${submittedInvoice.name}`, 14, 30);
-    doc.text(`Address: ${submittedInvoice.address}`, 14, 36);
-    doc.text(`Invoice #: ${submittedInvoice.invoiceNumber}`, 14, 42);
-    doc.text(`Date: ${submittedInvoice.date}`, 14, 48);
+    doc.setTextColor(0, 0, 0); // reset to black
+    doc.text(`Client: ${submittedInvoice.name}`, 14, 40);
+    doc.text(`Address: ${submittedInvoice.address}`, 14, 46);
+    doc.text(`Invoice #: ${submittedInvoice.invoiceNumber}`, 14, 52);
+    doc.text(`Date: ${submittedInvoice.date}`, 14, 58);
 
-    // Table
+    
     const tableColumn = ["Description", "Qty", "Rate", "Amount"];
     const tableRows = submittedInvoice.items.map((item) => [
       item.description,
@@ -31,61 +36,66 @@ const InvoiceScript = () => {
       item.quantity * item.rate,
     ]);
 
-    // ✅ Correct usage
     autoTable(doc, {
       head: [tableColumn],
       body: tableRows,
-      startY: 60,
+      startY: 70,
     });
 
-    // Save PDF
     doc.save(`invoice-${submittedInvoice.invoiceNumber || "draft"}.pdf`);
   };
 
   return (
     <>
       {submittedInvoice && (
-        <div className="mt-8 p-6 border rounded bg-gray-50">
-          <h2 className="text-xl font-bold mb-4">Invoice Preview</h2>
-          <p>
-            <strong>Client:</strong> {submittedInvoice.name}
-          </p>
-          <p>
-            <strong>Address:</strong> {submittedInvoice.address}
-          </p>
-          <p>
-            <strong>Invoice #:</strong> {submittedInvoice.invoiceNumber}
-          </p>
-          <p>
-            <strong>Date:</strong> {submittedInvoice.date}
-          </p>
+        <div className="mt-8 p-6 border rounded bg-gray-50 max-w-6xl mx-auto">
+         
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-indigo-700 text-center">
+            {submittedInvoice.company}
+          </h1>
 
-          <table className="w-full mt-4 border">
-            <thead>
-              <tr className="bg-gray-200">
-                <th>Description</th>
-                <th>Qty</th>
-                <th>Rate</th>
-                <th>Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              {submittedInvoice.items.map((item, i) => (
-                <tr key={i}>
-                  <td>{item.description}</td>
-                  <td>{item.quantity}</td>
-                  <td>{item.rate}</td>
-                  <td>{item.quantity * item.rate}</td>
+          
+          <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 text-gray-800">
+            Invoice Preview
+          </h2>
+
+        
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <p><strong>Client:</strong> <span className="text-indigo-600">{submittedInvoice.name}</span></p>
+            <p><strong>Address:</strong> <span className="text-purple-600">{submittedInvoice.address}</span></p>
+            <p><strong>Invoice #:</strong> <span className="text-pink-600">{submittedInvoice.invoiceNumber}</span></p>
+            <p><strong>Date:</strong> <span className="text-green-600">{submittedInvoice.date}</span></p>
+          </div>
+
+        
+          <div className="overflow-x-auto">
+            <table className="w-full border text-sm sm:text-base">
+              <thead>
+                <tr className="bg-gray-200 text-left">
+                  <th className="px-2 py-1">Description</th>
+                  <th className="px-2 py-1">Qty</th>
+                  <th className="px-2 py-1">Rate</th>
+                  <th className="px-2 py-1">Amount</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {submittedInvoice.items.map((item, i) => (
+                  <tr key={i} className="border-t">
+                    <td className="px-2 py-1">{item.description}</td>
+                    <td className="px-2 py-1">{item.quantity}</td>
+                    <td className="px-2 py-1">{item.rate}</td>
+                    <td className="px-2 py-1">{item.quantity * item.rate}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
-          {/* ✅ Download PDF Button */}
-          <div className="mt-6 flex justify-end">
+         
+          <div className="mt-6 flex justify-center md:justify-end">
             <button
               onClick={handleDownloadPDF}
-              className="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition"
+              className="bg-blue-600 text-white px-6 py-2 rounded shadow hover:bg-blue-700 transition"
             >
               Download PDF
             </button>
