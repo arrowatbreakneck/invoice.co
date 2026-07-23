@@ -14,6 +14,7 @@ const InvoiceForm = () => {
       address: "",
       invoiceNumber: "",
       date: "",
+      // taxRate : "",
       items: [],
     },
     onSubmit: (values) => {
@@ -24,6 +25,7 @@ const InvoiceForm = () => {
       values.address.trim() !== "" &&
       values.invoiceNumber.trim() !== "" &&
       values.date.trim() !== "" &&
+      // values.taxRate.length> 0 &&
       values.items.length > 0 &&
       values.items.every(
         (item) =>
@@ -47,6 +49,13 @@ const InvoiceForm = () => {
 //   }
 
 //  }
+const subtotal = formik.values.items.reduce(
+    (sum, item) => sum + item.quantity * item.rate,
+    0
+  );
+  const tax = subtotal * taxRate;
+  const total = subtotal + tax;
+
   const addItem = () => {
     formik.setFieldValue("items", [
       ...formik.values.items,
@@ -60,13 +69,7 @@ const InvoiceForm = () => {
     formik.setFieldValue("items", updatedItems);
   };
 
-  const subtotal = formik.values.items.reduce(
-    (sum, item) => sum + item.quantity * item.rate,
-    0
-  );
-  const tax = subtotal * taxRate;
-  const total = subtotal + tax;
-
+  
   return (
     <div className="p-6 max-w-5xl mx-auto ">
       <h1 className="text-3xl font-bold mb-6 text-center text-indigo-700">

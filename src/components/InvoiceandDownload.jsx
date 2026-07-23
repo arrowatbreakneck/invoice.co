@@ -28,13 +28,21 @@ const InvoiceScript = () => {
     doc.text(`Date: ${submittedInvoice.date}`, 14, 58);
 
     
-    const tableColumn = ["Description", "Qty", "Rate", "Amount"];
-    const tableRows = submittedInvoice.items.map((item) => [
+    const tableColumn = ["Description", "Qty", "Rate", "Amount","Total (incl. Tax)"];
+    const tableRows = submittedInvoice.items.map((item) => {
+      const amount = item.quantity * item.rate;
+      const total = amount* 1.18;
+     return [ 
       item.description,
       item.quantity,
       item.rate,
-      item.quantity * item.rate,
-    ]);
+      amount.toFixed(2),
+      total.toFixed(2)
+      
+     ]
+      // item.taxRate 
+      // (item.quantity*item.rate)*0.18 
+  });
 
     autoTable(doc, {
       head: [tableColumn],
@@ -76,17 +84,25 @@ const InvoiceScript = () => {
                   <th className="px-2 py-1">Qty</th>
                   <th className="px-2 py-1">Rate</th>
                   <th className="px-2 py-1">Amount</th>
+                  <th className="px-2 py-1">total(incl. Tax)</th>
+
                 </tr>
               </thead>
               <tbody>
-                {submittedInvoice.items.map((item, i) => (
+                {submittedInvoice.items.map((item, i) => {
+                  const amount =item.quantity*item.rate;
+                  const total = amount*1.18;
+return(
                   <tr key={i} className="border-t">
                     <td className="px-2 py-1">{item.description}</td>
                     <td className="px-2 py-1">{item.quantity}</td>
                     <td className="px-2 py-1">{item.rate}</td>
-                    <td className="px-2 py-1">{item.quantity * item.rate}</td>
+                    <td className="px-2 py-1">{amount.toFixed(2)}</td>
+                    <td className="px-2 py-1">{total.toFixed(2)}</td>
+                    
                   </tr>
-                ))}
+)
+})}
               </tbody>
             </table>
           </div>
