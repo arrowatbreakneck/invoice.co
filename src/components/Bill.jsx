@@ -36,6 +36,7 @@ const InvoiceForm = () => {
 
     if (hasAllValues) {
       setnotification(true);
+      
     } else {
       setnotification(false);
       alert("Please fill in all fields before generating the invoice.");
@@ -76,7 +77,7 @@ const subtotal = formik.values.items.reduce(
         Invoice Generator
       </h1>
 
-      {
+     {
         notification &&(
           <div className="mb-4 p-4 rounded-md bg-green-100 border border-green-300 text-green-800 shadow-md">
           ✅ Now you can view and download the invoice copy in the
@@ -155,7 +156,7 @@ const subtotal = formik.values.items.reduce(
             />
           </div>
         </div>
-
+ 
         
         <button
           type="button"
