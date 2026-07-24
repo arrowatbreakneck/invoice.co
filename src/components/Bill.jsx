@@ -59,7 +59,7 @@ const subtotal = formik.values.items.reduce(
   const addItem = () => {
     formik.setFieldValue("items", [
       ...formik.values.items,
-      { description: "", quantity: 1, rate: 0 },
+      { description: "", quantity: "", rate: "" },
     ]);
   };
 
@@ -178,7 +178,10 @@ const subtotal = formik.values.items.reduce(
               placeholder="Description"
               className="p-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none"
             />
+          
+             
             <input
+            id="quantity"
               type="number"
               name={`items.${index}.quantity`}
               value={item.quantity}
@@ -187,15 +190,21 @@ const subtotal = formik.values.items.reduce(
               className="p-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none"
               min="1"
             />
+          
+          
+            
             <input
+            id="rate"
               type="number"
               name={`items.${index}.rate`}
               value={item.rate}
               onChange={formik.handleChange}
               placeholder="Rate"
-              className="p-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none"
-              min="1"
+             className="p-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:outline-none"
+              min="0"
             />
+           
+            
             <div className="p-2 text-gray-700 font-semibold">
               {item.quantity * item.rate || 0}
             </div>
